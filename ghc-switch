@@ -168,6 +168,8 @@ ghcTarballSha256() {
     ghc-8.6.1-x86_64-portbld-freebsd.tar.xz)          echo "51403b054a3a649039ac988e1d1112561f96750bfced63df864091a3fab36f08" ;;
 
     ghc-8.6.2-x86_64-apple-darwin.tar.xz)             echo "8ec46a25872226dd7e5cf7271e3f3450c05f32144b96e6b9cb44cc4079db50dc" ;;
+
+    ghc-8.6.3-x86_64-apple-darwin.tar.xz)             echo "79d069a1a7d74cfdd7ac2a2711c45d3ddc6265b988a0cefa342714b24f997fc1" ;;
     *) exit 1 ;;
   esac
 }
@@ -201,6 +203,7 @@ case "$GHCVER" in
   "8.4.4") ;;
   "8.6.1") ;;
   "8.6.2") ;;
+  "8.6.3") ;;
   *)
     echo "Available GHC versions:"
     echo "7.6.3"
@@ -216,6 +219,7 @@ case "$GHCVER" in
     echo "8.4.4"
     echo "8.6.1"
     echo "8.6.2"
+    echo "8.6.3"
     exit 1
     ;;
 esac
@@ -770,7 +774,6 @@ if [ ! -d "$HOME/.ghc-switch/ghc-$GHCVER" ]; then
         esac
       ;;
 
-
     8.6.2)
       echo "I don't know about this machine, please file an issue."
       echo ""
@@ -779,6 +782,18 @@ if [ ! -d "$HOME/.ghc-switch/ghc-$GHCVER" ]; then
       read -r -p "> " INPUT
         case "$INPUT" in
           1) GHCTARBALL="ghc-8.6.2-x86_64-apple-darwin.tar.xz"    ;;
+          *) exit 1                                               ;;
+        esac
+      ;;
+
+    8.6.3)
+      echo "I don't know about this machine, please file an issue."
+      echo ""
+      echo "1) ghc-8.6.3-x86_64-apple-darwin.tar.xz"
+      echo ""
+      read -r -p "> " INPUT
+        case "$INPUT" in
+          1) GHCTARBALL="ghc-8.6.3-x86_64-apple-darwin.tar.xz"    ;;
           *) exit 1                                               ;;
         esac
       ;;
